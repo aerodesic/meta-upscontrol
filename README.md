@@ -1,4 +1,4 @@
-# meta-upsdev
+# meta-upscontrol
 
-This project implements the UPS controller for raspberrypi
+This project implements the UPS and PDU controller for raspberrypi
 
