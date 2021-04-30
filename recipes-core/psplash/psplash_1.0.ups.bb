@@ -17,10 +17,10 @@ UPSTREAM_VERSION_UNKNOWN = "1"
 
 # The raspberrypi-img is specifically needed but another package depends on it and I can't make it disappear.
 SPLASH_IMAGES = " \
-    file://psplash-gentest-img.png;outsuffix=gentest  \
+    file://psplash-ups-img.png;outsuffix=ups  \
 "
 
-ALTERNATIVE_PRIORITY_psplash-gentest[psplash] = "100"
+ALTERNATIVE_PRIORITY_psplash-ups[psplash] = "100"
 
 python __anonymous() {
     oldpkgs = d.getVar("PACKAGES").split()
@@ -140,7 +140,7 @@ PROVIDES += "psplash-raspberrypi"
 
 SRC_URI += " \
     file://psplash-colors.h \
-    file://psplash-gentest-img.png \
+    file://psplash-ups-img.png \
     file://psplash.service \
 "
 
@@ -158,8 +158,8 @@ do_configure_append () {
     # strip the -img suffix from the bar png -- we could just store the
     # file under that suffix-less name, but that would make it confusing
     # for anyone updating the assets
-    cp ../psplash-gentest-img.png ./psplash-gentest.png
-    ./make-image-header.sh ./psplash-gentest.png BAR
+    cp ../psplash-ups-img.png ./psplash-ups.png
+    ./make-image-header.sh ./psplash-ups.png BAR
 }
 
 do_install_append() {

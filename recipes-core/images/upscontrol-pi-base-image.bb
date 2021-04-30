@@ -26,9 +26,9 @@ IMAGE_INSTALL_append += " tcpdump"
 # # END DEBUG
 
 # The goods
-IMAGE_INSTALL_append += " powercontrol powerhttp"
+IMAGE_INSTALL_append += " upsdisplay upscontrol upshttpd"
 
-HOSTNAME = "powercontrol"
+HOSTNAME = "ups"
 
 LICENSE = "MIT"
 

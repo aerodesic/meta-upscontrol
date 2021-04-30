@@ -64,7 +64,7 @@ go@robosity.com
 EOF
 
     install -m 755 -d ${D}${sysconfdir}/lighttpd.d/
-    install -m 644 ${S}/conf/upscontrol.conf ${D}${sysconfdir}/lighttpd.d
+    install -m 644 ${S}/conf/upshttpd.conf ${D}${sysconfdir}/lighttpd.d
 
     install -m 755 -d ${D}${WWW_PAGES}/static
     install -m 644 ${S}/js/* ${D}${WWW_PAGES}/static/
