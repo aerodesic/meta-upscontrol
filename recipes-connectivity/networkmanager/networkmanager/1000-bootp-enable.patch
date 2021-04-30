@@ -1,0 +1,15 @@
+diff --git a/src/dnsmasq/nm-dnsmasq-manager.c b/src/dnsmasq/nm-dnsmasq-manager.c
+index 735605e..83ecf93 100644
+--- a/src/dnsmasq/nm-dnsmasq-manager.c
++++ b/src/dnsmasq/nm-dnsmasq-manager.c
+@@ -153,6 +153,10 @@ create_dm_cmd_line (const char *iface,
+ 		return NULL;
+ 	}
+ 
++	/* Enable bootp of dynamic (permanent) addresses */
++	nm_strv_ptrarray_add_string_printf (cmd,
++					    "--bootp-dynamic");
++
+ 	nm_strv_ptrarray_add_string_printf (cmd,
+ 	                                    "--dhcp-range=%s,%s,60m",
+ 	                                    first,

@@ -1,0 +1,21 @@
+[Unit]
+Description=UPS and PDU control Display
+Requires=wpa_supplicant@wlan0.service
+After=wpa_supplicant@wlan0.service
+Requires=weston.service
+After=weston.service
+Requires=framebuffer.service
+After=framebuffer.service
+
+[Service]
+User=root
+Type=simple
+EnvironmentFile=/run/framebuffer.display
+Environment=HOME=/home/upscontrol
+ExecStart=/usr/bin/upsdisplay -f
+RestartSec=3
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

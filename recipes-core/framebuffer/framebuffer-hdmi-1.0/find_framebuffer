@@ -1,0 +1,13 @@
+#!/bin/bash
+if [ -e "/run/framebuffer" ]; then
+  . /run/framebuffer
+  echo "Framebuffer found on ${FRAMEBUFFER_DEVICE}"
+  exit 0
+else
+   # Default 0 for HDMI devices
+   FBNUM=0
+   echo FRAMEBUFFER_DEVICE=/dev/fb${FBNUM} > /run/framebuffer
+   echo FRAMEBUFFER_NUMBER=${FBNUM}        >> /run/framebuffer
+   echo DISPLAY=:${FBNUM}                  > /run/framebuffer.display
+   . /run/framebuffer
+fi

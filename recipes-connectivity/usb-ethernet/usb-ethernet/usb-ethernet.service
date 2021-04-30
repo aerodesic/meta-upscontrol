@@ -1,0 +1,15 @@
+[Unit]
+Description=Create NetworkManager connection for eth1 to be dhcp supplied addresses
+BindsTo=NetworkManager.service
+Wants=NetworkManager.service
+After=NetworkManager.service
+Before=hotspot.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/nm-online -s
+ExecStart=/usr/sbin/usb-ethernet-setup.sh usb-eth1 eth1 192.168.100.1/24
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,28 @@
+[Unit]
+Description=Enable framebuffer for LCD screen
+
+[Service]
+User=root
+Type=oneshot
+RemainAfterExit=True
+
+ExecStartPre=-/bin/systemctl disable getty@tty1.service
+ExecStartPre=-/bin/systemctl stop getty@tty1.service
+ExecStartPre=-/bin/systemctl disable serial-getty@ttyS0.service
+ExecStartPre=-/bin/systemctl stop serial-getty@ttyS0.service
+
+# Probe the module spi module
+###
+
+# Probe our frame buffer module
+###
+
+# Wait for frame buffer to come up and identify in /run/framebuffer
+ExecStartPost=/usr/sbin/find_framebuffer
+
+# Shut off gettys from tty1 and serial channel
+
+
+[Install]
+WantedBy=sysinit.target
+

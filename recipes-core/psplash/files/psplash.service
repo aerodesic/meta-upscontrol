@@ -1,0 +1,14 @@
+[Unit]
+Description=Starts Psplash Boot screen
+Requires=framebuffer.service
+After=framebuffer.service systemd-udev-trigger.service systemd-udevd.service
+DefaultDependencies=no
+Before=weston.service
+
+[Service]
+EnvironmentFile=/run/framebuffer
+ExecStart=/usr/bin/psplash -f ${FRAMEBUFFER_NUMBER}
+
+[Install]
+WantedBy=sysinit.target
+

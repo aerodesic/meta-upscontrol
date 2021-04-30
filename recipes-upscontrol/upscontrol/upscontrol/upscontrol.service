@@ -1,0 +1,20 @@
+[Unit]
+Description=UPS and PDU Control Server
+Requires=rootresizer.service
+After=rootresizer.service
+BindsTo=upsprestart.service
+
+[Service]
+User=root
+Type=simple
+Environment=HOME=/home/upscontrol
+WorkingDirectory=/home/upscontrol
+ExecStart=/usr/sbin/upscontrol --daemon
+KillSignal=SIGINT
+PIDFile=/var/run/upscontrol/upscontrol.pid
+RestartSec=3
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

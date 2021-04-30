@@ -1,0 +1,26 @@
+#!/bin/bash
+# Wait for frame buffer up to 10 seconds
+if [ -e "/run/framebuffer" ]; then
+  . /run/framebuffer
+  echo "Framebuffer found on ${FRAMEBUFFER_DEVICE}"
+  exit 0
+else
+  counter=0
+  while [[ "$counter" -lt 10 ]]; do
+    FBNUM=`fgrep fb_ft81x /proc/fb | cut -d ' ' -f 1`
+    if [ -n "${FBNUM}" -a -e "/dev/fb${FBNUM}" ]; then
+      echo "Framebuffer found on /dev/fb${FBNUM}"
+      # Put the framebuffer stuff into /run/framebuffer
+      echo FRAMEBUFFER_DEVICE=/dev/fb${FBNUM} > /run/framebuffer
+      echo FRAMEBUFFER_NUMBER=${FBNUM}        >> /run/framebuffer
+      echo DISPLAY=:${FBNUM}                  > /run/framebuffer.display
+      counter=10
+      . /run/framebuffer
+    elif [[ "$counter" -gt 10 ]]; then
+      exit 1
+    else
+      counter=$((counter+1))
+      sleep 1
+    fi
+  done
+fi
