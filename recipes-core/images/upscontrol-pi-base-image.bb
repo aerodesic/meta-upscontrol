@@ -20,6 +20,7 @@ IMAGE_INSTALL_append += " wpa-supplicant"
 IMAGE_INSTALL_append += " dhcpcd"
 IMAGE_INSTALL_append += " ifupdown iproute2 net-tools"
 IMAGE_INSTALL_append += " rootresizer"
+IMAGE_INSTALL_append += " net-snmp"
 # # Extra for debug
 IMAGE_INSTALL_append += " procps"
 IMAGE_INSTALL_append += " tcpdump"

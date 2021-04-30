@@ -11,7 +11,7 @@ After=framebuffer.service
 User=root
 Type=simple
 EnvironmentFile=/run/framebuffer.display
-Environment=HOME=/home/upscontrol
+Environment=HOME=/home/ups
 ExecStart=/usr/bin/upsdisplay -f
 RestartSec=3
 Restart=always

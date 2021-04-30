@@ -32,7 +32,7 @@ do_install_append() {
         sed -i -e 's#@SYSCONFDIR@#${sysconfdir}#g' ${file}
         sed -i -e 's#@SBINDIR@#${sbindir}#g' ${file}
         sed -i -e 's#@BINDIR@#${bindir}#g' ${file}
-	sed -i -e 's#@USB_ETHERNET_CONNECTIONS@#${USB_ETHERNET_CONNECTIONS}#g' ${file}
+	sed -i -e 's#@USB_ETHERNET_SETUP@#${USB_ETHERNET_SETUP}#g' ${file}
     done
 }
 

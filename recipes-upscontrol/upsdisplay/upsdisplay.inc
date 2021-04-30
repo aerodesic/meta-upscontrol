@@ -57,7 +57,7 @@ do_install_append() {
     install -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/${PN}.service ${D}${systemd_unitdir}/system
 
-    install -m 755 -d ${D}/home/upscontrol/
+    install -m 755 -d ${D}/home/ups/
 }
 
 # Has a password
@@ -72,7 +72,7 @@ def hash_default_password(pw):
 # Conditionally assign GENTEST_CRYPT_PASSWORD only if GENTEST_PASSWORD is defined
 GENTEST_CRYPT_PASSWORD := "${@hash_default_password('${GENTEST_PASSWORD}')}"
 
-FILES_${PN} = "${libdir} ${bindir} ${sysconfdir} ${datadir} ${systemd_unitdir} /home/upscontrol"
+FILES_${PN} = "${libdir} ${bindir} ${sysconfdir} ${datadir} ${systemd_unitdir} /home/ups"
 
 SYSTEMD_AUTO_ENABLE_${PN} = "enable"
 
